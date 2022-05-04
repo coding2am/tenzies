@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.092e4371.css",
+    "main.js": "/static/js/main.fcb5e93b.js",
+    "static/js/787.80cd1330.chunk.js": "/static/js/787.80cd1330.chunk.js",
+    "static/media/RadioCanada-Medium.ttf": "/static/media/RadioCanada-Medium.5e4c7e2f1eb9825b2799.ttf",
+    "index.html": "/index.html",
+    "main.092e4371.css.map": "/static/css/main.092e4371.css.map",
+    "main.fcb5e93b.js.map": "/static/js/main.fcb5e93b.js.map",
+    "787.80cd1330.chunk.js.map": "/static/js/787.80cd1330.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.092e4371.css",
+    "static/js/main.fcb5e93b.js"
+  ]
+}
