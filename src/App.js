@@ -66,18 +66,15 @@ function App() {
     }
     return;
   };
-  const saveScore = (champion) => {
-    champion && localStorage.setItem("bestRolls", rollTimes.currentRollTimes);
-    const result = champion
-      ? {
-          bestRollTimes: rollTimes.currentRollTimes,
-          currentRollTimes: 0,
-        }
-      : (prevRollTime) => ({
-          ...prevRollTime,
-          currentRollTimes: 0,
-        });
-    setRollTimes(result);
+  const restartGame = () => {
+    setRollTimes((prevRollTime) => ({
+      ...prevRollTime,
+      currentRollTimes: 0,
+    }));
+  };
+  const saveBestScore = (score) => {
+    sessionStorage.setItem("bestRollTimes", score);
+    setRollTimes((prevRollTime) => ({ ...prevRollTime, bestRollTimes: score }));
   };
   const changeDiceTheme = (theme) => {
     setDiceTheme((prevTheme) => ({ ...prevTheme, currentTheme: theme }));
@@ -87,9 +84,9 @@ function App() {
   const [dice, setDice] = useState(generateTenDice(true));
   const [rollTimes, setRollTimes] = useState({
     currentRollTimes: 0,
-    bestRollTimes: localStorage.getItem("bestRolls")
-      ? localStorage.getItem("bestRolls")
-      : 0,
+    bestRollTimes: sessionStorage.getItem("bestRollTimes")
+      ? sessionStorage.getItem("bestRollTimes")
+      : NaN,
   });
   const [gameStatus, setGameStatus] = useState({
     tenzies: false,
@@ -117,19 +114,22 @@ function App() {
         startGame: true,
       }));
       let winningMsg;
-      if (rollTimes.bestRollTimes === "0") {
+      if (isNaN(rollTimes.bestRollTimes)) {
         /* There is no best score */
-        saveScore(true);
+        saveBestScore(rollTimes.currentRollTimes);
+        restartGame();
         winningMsg = `Tenzies! You win in ${rollTimes.currentRollTimes} times.`;
       } else {
         /* Already had a best score */
         if (rollTimes.currentRollTimes <= rollTimes.bestRollTimes) {
           /* New best record */
-          saveScore(true);
+          saveBestScore(rollTimes.currentRollTimes);
+          restartGame();
           winningMsg = `Tenzies! You win in ${rollTimes.currentRollTimes} times. (Fastest)`;
         } else {
           /* Just a normal win */
-          saveScore(false);
+          restartGame();
+          console.log("normal win");
           winningMsg = `Tenzies! You win in ${rollTimes.currentRollTimes} times.`;
         }
       }
@@ -174,7 +174,9 @@ function App() {
           rollDice={rollDice}
           startGame={gameStatus.startGame}
           rollTimes={rollTimes.currentRollTimes}
-          bestRollTimes={rollTimes.bestRollTimes}
+          bestRollTimes={
+            isNaN(rollTimes.bestRollTimes) ? "?" : rollTimes.bestRollTimes
+          }
           themes={diceTheme.themes}
           currentTheme={diceTheme.currentTheme}
           changeDiceTheme={changeDiceTheme}
