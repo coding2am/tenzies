@@ -1,0 +1,421 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap');
+@font-face {
+  font-family: main-font;
+  src: url("./fonts/RadioCanada-Medium.ttf");
+}
+* {
+  font-family: main-font;
+  color:#000;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100vw;
+  height: 100vh;
+  /* max-width: 100vw;
+  max-height: 100vh; */
+  background-color: #e2f1f8;
+  /* padding: 10%; */
+}
+.app--container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+main {
+  width: 70vw;
+  height: 70vh;
+  padding: 2%;
+  border-radius: 0.25rem;
+  background: rgba( 255, 255, 255, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 17px );
+  -webkit-backdrop-filter: blur( 17px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.dice--container {
+  display: grid;
+  grid-template: auto auto / repeat(5,1fr);
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.dice {
+  cursor: pointer;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 10%;
+  padding: 0.5rem;
+}
+.dot {
+  display: block;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.dice--1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dice--2, .dice--3 {
+  display: flex;
+  justify-content: space-between;
+}
+.dice--2 .dot:nth-child(2) {
+  align-self: flex-end;
+}
+
+.dice--3 .dot:nth-child(3) {
+  align-self: flex-end;
+}
+
+.dice--3 .dot:nth-child(2) {
+  align-self: center;
+}
+.dice--4, .dice--6, .dice--5 {
+  display: flex;
+  justify-content: space-between;
+}
+.dice--4 > .divider, .dice--6 > .divider, .dice--5 > .divider {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.dice--5 > .divider:nth-of-type(2) {
+  justify-content: center;
+}
+.control--container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.roll--btn {
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  font-size: 1.5rem;
+  color:#fff;
+  background-color: #afc2cb;
+}
+.roll--btn:focus {
+  outline: none;
+}
+.roll--btn:active {
+  box-shadow: inset 5px 5px 10px -3px rgba(0,0,0,0.7);
+}
+.info--title {
+  display: flex;
+  justify-content: center;
+  opacity: 0.8;
+  user-select: none;
+  font-family: 'Josefin Sans', sans-serif;
+}
+.info--title h1 {
+  font-size: 2.5rem;
+  letter-spacing: 3px;
+}
+.info--title small {
+  font-size: 0.75rem;
+  font-weight: bold;
+  opacity: 0.6;
+  word-spacing: 1px;
+}
+.info--explanation {
+  margin-top: 1rem;
+  opacity: 0.5;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+
+/* dice animation */
+.shake {
+  animation:shake 0.5s infinite;
+}
+
+@keyframes shake {
+  0% {
+    transform:rotate(10deg)
+  }
+  50% {
+    transform:rotate(-10deg)
+  }
+  100% {
+    transform:rotate(10deg)
+  }
+}
+
+.score--best {
+  font-size: 0.8rem;
+  opacity: 0.5;
+  margin: 0.5rem 0;
+}
+.score--current {
+  font-size: 1rem;
+  opacity: 0.5;
+}
+.score {
+  margin-left: 0.5rem;
+}
+
+.theme--container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.theme--title {
+  margin: 0.25rem 0;
+  font-size: 1rem;
+  opacity: 0.5;
+  display: flex;
+  justify-content: space-between;
+  user-select: none;
+}
+.theme--list > i {
+  margin: 0 0.25rem;
+  cursor: pointer;
+  font-size: 1.25rem;
+}
+
+/* 
+
+ - - - RESPONSIVE - - -
+
+*/
+
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {
+  /* CSS */
+}
+
+/* 
+  ##Device = Laptops, Desktops
+  ##Screen = B/w 1025px to 1280px
+*/
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  /* CSS */
+}
+
+/* 
+  ##Device = Tablets, Ipads (portrait)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* CSS */
+  main {
+    width: 90vw;
+    height: 90vh;
+    padding: 5%;
+    justify-content: space-around;
+  }
+  .info--title h1 {
+    font-size: 3.5rem;
+  }
+  .info--title small {
+    font-size: 1rem;
+  }
+  .info--explanation {
+    font-size: 0.9rem;
+  }
+  .dice {
+    width: 6rem;
+    height: 6rem;
+  }
+  .dot {
+    width: 1rem;
+    height: 1rem;
+  }
+  .roll--btn {
+    padding: 1rem 1.5rem;
+    font-size: 2.5rem;
+  }
+  .score--best {
+    font-size: 1rem;
+  }
+  .score--current {
+    font-size: 1.25rem;
+  }
+  
+  .theme--title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .theme--list > i {
+    margin: 0 0.25rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+}
+
+/* 
+  ##Device = Tablets, Ipads (landscape)
+  ##Screen = B/w 768px to 1024px
+*/
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* CSS */
+  .info--title h1 {
+    font-size: 3rem;
+  }
+  .info--title small {
+    font-size: 0.75rem;
+  }
+  .info--explanation {
+    font-size: 0.75rem;
+  }
+  .roll--btn {
+    padding: 1rem 1.5rem;
+    font-size: 2rem;
+  }
+  .score--best {
+    font-size: 0.75rem;
+  }
+  .score--current {
+    font-size: 1rem;
+  }
+  .theme--title {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+  .theme--list > i {
+    margin: 0 0.25rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+}
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+  /* CSS */
+}
+
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 321px) and (max-width: 480px) {
+  /* CSS */
+  main {
+    width: 100vw;
+    height: 100vh;
+    padding: 5%;
+    justify-content: space-around;
+  }
+  .info--title h1 {
+    font-size: 2rem;
+  }
+  .info--title small {
+    font-size: 0.5rem;
+  }
+  .info--explanation {
+    font-size: 0.5rem;
+  }
+  .dice {
+    width: 3rem;
+    height: 3rem;
+  }
+  .dot {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+  .control--container {
+    height: 40%;
+    width: 100%;
+    flex-direction: column;
+  }
+  .roll--btn {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+  .score--best {
+    font-size: 1rem;
+  }
+  .score--current {
+    font-size: 1.25rem;
+  }
+  
+  .theme--title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .theme--list > i {
+    margin: 0 0.25rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+}
+@media (min-width: 220px) and (max-width: 320px) {
+  /* CSS */
+  main {
+    width: 100vw;
+    height: 100vh;
+    padding: 5%;
+    justify-content: space-around;
+  }
+  .info--title h1 {
+    font-size: 2rem;
+  }
+  .info--title small {
+    font-size: 0.5rem;
+  }
+  .info--explanation {
+    font-size: 0.5rem;
+  }
+  .dice {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .dot {
+    width: 0.3rem;
+    height: 0.3rem;
+  }
+  .control--container {
+    height: 40%;
+    width: 100%;
+    flex-direction: column;
+  }
+  .roll--btn {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+  .score--best {
+    font-size: 1rem;
+  }
+  .score--current {
+    font-size: 1.25rem;
+  }
+  
+  .theme--title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  .theme--list > i {
+    margin: 0 0.25rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+  }
+}
